@@ -1,0 +1,99 @@
+{
+  "name": "jspm-typescript-react-boilerplate",
+  "version": "0.0.1",
+  "description": "boilerplate to be used for setting up applications run with jspm",
+  "main": "server.js",
+  "scripts": {
+    "develop": "chokidar-socket-emitter > chokidar.log 2>chokidar-error.log & echo $! > chokidar.pid; node server.js 2>&1 & echo $! > node.pid;",
+    "shutdown": "kill -9 $(cat chokidar.pid) && kill -9 $(cat node.pid) && rm chokidar* && rm node.pid",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jspm",
+    "systemjs",
+    "hot",
+    "reloading",
+    "typescript",
+    "react"
+  ],
+  "author": "Eric Sebastian",
+  "license": "ISC",
+  "devDependencies": {
+    "jspm": "^0.17.0-beta.44"
+  },
+  "jspm": {
+    "name": "jspm-typescript-react-boilerplate",
+    "main": "jspm-typescript-react-boilerplate.js",
+    "dependencies": {
+      "react-dom": "npm:react-dom@^15.6.1"
+    },
+    "devDependencies": {
+      "module": "npm:jspm-nodelibs-module@^0.2.0",
+      "net": "npm:jspm-nodelibs-net@^0.2.0",
+      "plugin-typescript": "github:frankwallis/plugin-typescript@^7.1.0",
+      "systemjs-hot-reloader": "npm:systemjs-hot-reloader@^1.1.0",
+      "typescript": "npm:typescript@^2.4.0"
+    },
+    "peerDependencies": {
+      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
+      "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
+      "constants": "npm:jspm-nodelibs-constants@^0.2.0",
+      "crypto": "npm:jspm-nodelibs-crypto@^0.2.0",
+      "domain": "npm:jspm-nodelibs-domain@^0.2.0",
+      "events": "npm:jspm-nodelibs-events@^0.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "http": "npm:jspm-nodelibs-http@^0.2.0",
+      "https": "npm:jspm-nodelibs-https@^0.2.0",
+      "os": "npm:jspm-nodelibs-os@^0.2.0",
+      "path": "npm:jspm-nodelibs-path@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0",
+      "react": "npm:react@^15.6.1",
+      "stream": "npm:jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "url": "npm:jspm-nodelibs-url@^0.2.0",
+      "util": "npm:jspm-nodelibs-util@^0.2.0",
+      "vm": "npm:jspm-nodelibs-vm@^0.2.0",
+      "zlib": "npm:jspm-nodelibs-zlib@^0.2.0"
+    },
+    "overrides": {
+      "npm:browserify-zlib@0.1.4": {
+        "dependencies": {
+          "readable-stream": "^2.0.2",
+          "pako": "~0.2.0"
+        },
+        "map": {
+          "_stream_transform": "readable-stream/transform"
+        }
+      },
+      "npm:inherits@2.0.3": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:pbkdf2@3.0.13": {
+        "main": "browser.js"
+      },
+      "npm:safe-buffer@5.1.1": {
+        "browser": "index.js"
+      },
+      "npm:typescript@2.5.2": {
+        "browser": {},
+        "map": {
+          "buffer": "@empty",
+          "child_process": "@empty",
+          "fs": "@empty",
+          "path": "@empty",
+          "process": "@empty",
+          "readline": "@empty"
+        },
+        "dependencies": {
+          "source-map-support": "*"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
