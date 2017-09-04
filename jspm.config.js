@@ -13,7 +13,9 @@ SystemJS.config({
       "typescript": "npm:typescript@2.5.2",
       "net": "npm:jspm-nodelibs-net@0.2.1",
       "module": "npm:jspm-nodelibs-module@0.2.1",
-      "systemjs-hot-reloader": "npm:systemjs-hot-reloader@1.1.0"
+      "systemjs-hot-reloader": "npm:systemjs-hot-reloader@1.1.0",
+      "express": "npm:express@4.15.4",
+      "querystring": "npm:jspm-nodelibs-querystring@0.2.2"
     },
     "packages": {
       "npm:typescript@2.5.2": {
@@ -30,13 +32,122 @@ SystemJS.config({
         "map": {
           "systemjs-hmr": "npm:systemjs-hmr@2.0.9"
         }
+      },
+      "npm:express@4.15.4": {
+        "map": {
+          "merge-descriptors": "npm:merge-descriptors@1.0.1",
+          "path-to-regexp": "npm:path-to-regexp@0.1.7",
+          "array-flatten": "npm:array-flatten@1.1.1",
+          "encodeurl": "npm:encodeurl@1.0.1",
+          "cookie": "npm:cookie@0.3.1",
+          "send": "npm:send@0.15.4",
+          "vary": "npm:vary@1.1.1",
+          "setprototypeof": "npm:setprototypeof@1.0.3",
+          "type-is": "npm:type-is@1.6.15",
+          "accepts": "npm:accepts@1.3.4",
+          "parseurl": "npm:parseurl@1.3.1",
+          "qs": "npm:qs@6.5.0",
+          "utils-merge": "npm:utils-merge@1.0.0",
+          "depd": "npm:depd@1.1.1",
+          "fresh": "npm:fresh@0.5.0",
+          "debug": "npm:debug@2.6.8",
+          "range-parser": "npm:range-parser@1.2.0",
+          "proxy-addr": "npm:proxy-addr@1.1.5",
+          "content-disposition": "npm:content-disposition@0.5.2",
+          "on-finished": "npm:on-finished@2.3.0",
+          "serve-static": "npm:serve-static@1.12.4",
+          "escape-html": "npm:escape-html@1.0.3",
+          "statuses": "npm:statuses@1.3.1",
+          "etag": "npm:etag@1.8.0",
+          "cookie-signature": "npm:cookie-signature@1.0.6",
+          "content-type": "npm:content-type@1.0.2",
+          "finalhandler": "npm:finalhandler@1.0.4",
+          "methods": "npm:methods@1.1.2"
+        }
+      },
+      "npm:send@0.15.4": {
+        "map": {
+          "encodeurl": "npm:encodeurl@1.0.1",
+          "depd": "npm:depd@1.1.1",
+          "fresh": "npm:fresh@0.5.0",
+          "debug": "npm:debug@2.6.8",
+          "range-parser": "npm:range-parser@1.2.0",
+          "mime": "npm:mime@1.3.4",
+          "on-finished": "npm:on-finished@2.3.0",
+          "escape-html": "npm:escape-html@1.0.3",
+          "statuses": "npm:statuses@1.3.1",
+          "etag": "npm:etag@1.8.0",
+          "http-errors": "npm:http-errors@1.6.2",
+          "destroy": "npm:destroy@1.0.4",
+          "ms": "npm:ms@2.0.0"
+        }
+      },
+      "npm:serve-static@1.12.4": {
+        "map": {
+          "encodeurl": "npm:encodeurl@1.0.1",
+          "parseurl": "npm:parseurl@1.3.1",
+          "send": "npm:send@0.15.4",
+          "escape-html": "npm:escape-html@1.0.3"
+        }
+      },
+      "npm:type-is@1.6.15": {
+        "map": {
+          "media-typer": "npm:media-typer@0.3.0",
+          "mime-types": "npm:mime-types@2.1.17"
+        }
+      },
+      "npm:http-errors@1.6.2": {
+        "map": {
+          "depd": "npm:depd@1.1.1",
+          "setprototypeof": "npm:setprototypeof@1.0.3",
+          "statuses": "npm:statuses@1.3.1",
+          "inherits": "npm:inherits@2.0.3"
+        }
+      },
+      "npm:proxy-addr@1.1.5": {
+        "map": {
+          "ipaddr.js": "npm:ipaddr.js@1.4.0",
+          "forwarded": "npm:forwarded@0.1.0"
+        }
+      },
+      "npm:accepts@1.3.4": {
+        "map": {
+          "negotiator": "npm:negotiator@0.6.1",
+          "mime-types": "npm:mime-types@2.1.17"
+        }
+      },
+      "npm:on-finished@2.3.0": {
+        "map": {
+          "ee-first": "npm:ee-first@1.1.1"
+        }
+      },
+      "npm:finalhandler@1.0.4": {
+        "map": {
+          "debug": "npm:debug@2.6.8",
+          "encodeurl": "npm:encodeurl@1.0.1",
+          "escape-html": "npm:escape-html@1.0.3",
+          "on-finished": "npm:on-finished@2.3.0",
+          "parseurl": "npm:parseurl@1.3.1",
+          "statuses": "npm:statuses@1.3.1",
+          "unpipe": "npm:unpipe@1.0.0"
+        }
+      },
+      "npm:debug@2.6.8": {
+        "map": {
+          "ms": "npm:ms@2.0.0"
+        }
+      },
+      "npm:mime-types@2.1.17": {
+        "map": {
+          "mime-db": "npm:mime-db@1.30.0"
+        }
       }
     }
   },
   transpiler: "plugin-typescript",
   typescriptOptions: {
-  "noImplicitAny": true,
-  "tsconfig": true
+    "noImplicitAny": true,
+    "tsconfig": true
   },
   packages: {
     "jspm-typescript-react-boilerplate": {
