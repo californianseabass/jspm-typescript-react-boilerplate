@@ -1,9 +1,8 @@
-"use strict";
+'use strict';
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server.js';
 import { HelloWorld } from 'jspm-typescript-react-boilerplate/components/HelloWorld.tsx';
-
 
 const index: String = `
 <!doctype html>
@@ -20,10 +19,10 @@ const index: String = `
     <title>Jspm TypeScript React Boilerplate</title>
 </head>
 <body>
-${ReactDOMServer.renderToString(<HelloWorld compiler="you"/>)}
+${ReactDOMServer.renderToString(<HelloWorld compiler="you" />)}
 </body>
 
-`
+`;
 
 const port = 9080;
 
@@ -36,5 +35,5 @@ app.get('/', (req, res) => {
 // app.use(express.static("."));
 
 app.listen(port, () => {
-console.log("Listening on port ", port);
+  console.log('Listening on port ', port);
 });

@@ -1,22 +1,19 @@
 {
   "name": "jspm-typescript-react-boilerplate",
   "version": "0.0.1",
-  "description": "boilerplate to be used for setting up applications run with jspm",
+  "description":
+    "boilerplate to be used for setting up applications run with jspm",
   "main": "server.js",
   "scripts": {
-    "chokidar": "chokidar-socket-emitter > chokidar.log 2>chokidar-error.log & echo $! > chokidar.pid;",
-    "server": "jspm run server.tsx",
+    "chokidar":
+      "chokidar-socket-emitter > chokidar.log 2>chokidar-error.log & echo $! > chokidar.pid;",
+    "lint": "prettier --config prettier.config.json --write \"**/*.tsx\"",
+    "postinstall": "jspm install",
+    "start": "jspm run server.tsx",
     "shutdown": "kill -9 $(cat chokidar.pid) && rm chokidar*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "jspm",
-    "systemjs",
-    "hot",
-    "reloading",
-    "typescript",
-    "react"
-  ],
+  "keywords": ["jspm", "systemjs", "hot", "reloading", "typescript", "react"],
   "author": "Eric Sebastian",
   "license": "ISC",
   "devDependencies": {
@@ -87,9 +84,7 @@
         }
       },
       "npm:inherits@2.0.3": {
-        "ignore": [
-          "test.js"
-        ]
+        "ignore": ["test.js"]
       },
       "npm:pbkdf2@3.0.13": {
         "main": "browser.js"

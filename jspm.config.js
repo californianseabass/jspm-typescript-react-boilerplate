@@ -2,7 +2,7 @@ SystemJS.config({
   paths: {
     "github:": "jspm_packages/github/",
     "npm:": "jspm_packages/npm/",
-    "jspm-typescript-react-boilerplate/": "/"
+    "jspm-typescript-react-boilerplate/": ""
   },
   browserConfig: {
     "baseURL": "/"
