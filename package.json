@@ -5,6 +5,7 @@
     "boilerplate to be used for setting up applications run with jspm",
   "main": "server.js",
   "scripts": {
+    "bundle": "jspm bundle app.tsx build.js",
     "chokidar":
       "chokidar-socket-emitter > chokidar.log 2>chokidar-error.log & echo $! > chokidar.pid;",
     "lint": "prettier --config prettier.config.json --write \"**/*.tsx\"",

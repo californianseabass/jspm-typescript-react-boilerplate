@@ -11,15 +11,14 @@
 
     <title>Jspm TypeScript React Boilerplate</title>
 
-    <script src="jspm_packages/system.js"></script>
-    <script src="jspm.config.js"></script>
+    <script type="build.js"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
-    SystemJS.import('systemjs-hot-reloader').then(function(connect) {
-      connect()
-      SystemJS.import('app.tsx');
+    System.import('systemjs-hot-reloader').then(function(connect) {
+      connect();
+      System.import('app.tsx');
     });
   </script>
 </body>
