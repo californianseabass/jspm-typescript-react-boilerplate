@@ -1,20 +1,25 @@
 {
   "name": "jspm-typescript-react-boilerplate",
   "version": "0.0.1",
-  "description":
-    "boilerplate to be used for setting up applications run with jspm",
+  "description": "boilerplate to be used for setting up applications run with jspm",
   "main": "server.js",
   "scripts": {
     "bundle": "jspm bundle app.tsx build.js",
-    "chokidar":
-      "chokidar-socket-emitter > chokidar.log 2>chokidar-error.log & echo $! > chokidar.pid;",
+    "chokidar": "chokidar-socket-emitter > chokidar.log 2>chokidar-error.log & echo $! > chokidar.pid;",
     "lint": "prettier --config prettier.config.json --write \"**/*.tsx\"",
     "postinstall": "jspm install",
     "start": "jspm run server.tsx",
     "shutdown": "kill -9 $(cat chokidar.pid) && rm chokidar*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["jspm", "systemjs", "hot", "reloading", "typescript", "react"],
+  "keywords": [
+    "jspm",
+    "systemjs",
+    "hot",
+    "reloading",
+    "typescript",
+    "react"
+  ],
   "author": "Eric Sebastian",
   "license": "ISC",
   "devDependencies": {
@@ -24,7 +29,9 @@
     "name": "jspm-typescript-react-boilerplate",
     "main": "jspm-typescript-react-boilerplate.js",
     "dependencies": {
-      "react-dom": "npm:react-dom@^15.6.1"
+      "d3": "npm:d3@^4.12.0",
+      "react-dom": "npm:react-dom@^15.6.1",
+      "react-faux-dom": "npm:react-faux-dom@^4.1.0"
     },
     "devDependencies": {
       "express": "npm:express@^4.15.4",
@@ -67,6 +74,9 @@
           "_stream_transform": "readable-stream/transform"
         }
       },
+      "npm:d3@4.12.0": {
+        "browser": "./build/d3.js"
+      },
       "npm:debug@2.6.8": {
         "main": "src/browser.js",
         "jspmNodeConversion": false,
@@ -85,9 +95,11 @@
         }
       },
       "npm:inherits@2.0.3": {
-        "ignore": ["test.js"]
+        "ignore": [
+          "test.js"
+        ]
       },
-      "npm:pbkdf2@3.0.13": {
+      "npm:pbkdf2@3.0.14": {
         "main": "browser.js"
       },
       "npm:safe-buffer@5.1.1": {

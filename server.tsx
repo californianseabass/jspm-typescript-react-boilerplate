@@ -3,9 +3,11 @@ import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server.js';
 import { HelloWorld } from 'jspm-typescript-react-boilerplate/components/HelloWorld.tsx';
+import MyReactComponent from 'jspm-typescript-react-boilerplate/components/MyReactComponent.tsx';
+
 
 function index(preloadedState: any): String {
-    const body = ReactDOMServer.renderToString(<HelloWorld compiler={preloadedState.name} />);
+    const body = ReactDOMServer.renderToString(<MyReactComponent />);
     return `<!doctype html>
     <meta charset="utf-8">
     <html lang="en">
@@ -24,7 +26,6 @@ function index(preloadedState: any): String {
     </head>
     <body>
               <div id="app">${body}</div>
-
     </body>
     <script>
         window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
