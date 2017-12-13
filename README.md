@@ -1,3 +1,12 @@
+
+## How To Use
+```bash
+git clone https://github.com/californianseabass/jspm-typescript-react-boilerplate.git $my-repo
+cd $my_repo
+rm -rf .git
+npm i
+```
+
 ### Installation
 ```bash
 npm i
@@ -5,10 +14,10 @@ npm i
 
 ### Running
 ```bash
-npm start
+npm run start
 ```
 
 ### Linting
-```
+```bash
 npm run lint
 ```
