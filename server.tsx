@@ -6,8 +6,7 @@ import { HelloWorld } from 'jspm-typescript-react-boilerplate/components/HelloWo
 import MyReactComponent from 'jspm-typescript-react-boilerplate/components/MyReactComponent.tsx';
 
 
-function index(preloadedState: any): String {
-    const body = ReactDOMServer.renderToString(<MyReactComponent />);
+function index(preloadedState: any, body: String): String {
     return `<!doctype html>
     <meta charset="utf-8">
     <html lang="en">
@@ -39,12 +38,16 @@ function index(preloadedState: any): String {
     `;
 }
 
+const dataArray = [23, 13, 21, 14, 37, 15, 18, 34, 30];
+
 const port = 9080;
 
+const body = ReactDOMServer.renderToString(<MyReactComponent dataArray={dataArray}/>);
+console.log('body: ', body);
 const app: express.Application = express();
 
 app.get('/', (req, res) => {
-  res.send(index({name: 'snorlax'}));
+  res.send(index({name: 'snorlax'}, body));
 });
 
 app.use(express.static("."));
