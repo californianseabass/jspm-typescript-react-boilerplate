@@ -2,8 +2,8 @@
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server.js';
-import { HelloWorld } from 'jspm-typescript-react-boilerplate/components/HelloWorld.tsx';
-import MyReactComponent from 'jspm-typescript-react-boilerplate/components/MyReactComponent.tsx';
+
+import Main, { MainProps } from 'jspm-typescript-react-boilerplate/components/Main.tsx';
 
 
 function index(preloadedState: any, body: String): String {
@@ -38,20 +38,28 @@ function index(preloadedState: any, body: String): String {
     `;
 }
 
+function generateRandomBarChart(n: number, min: number = 0, max: number = 10): BarChartProps {
+    const data = [];
+    for (i = 0; i < number; i++) {
+        const newDataPoint = Math.rand(i);
+    }
+
+}
+
 const dataArray = [23, 13, 21, 14, 37, 15, 18, 34, 30];
 
 const port = 9080;
 
-const body = ReactDOMServer.renderToString(<MyReactComponent dataArray={dataArray}/>);
-console.log('body: ', body);
+const body = ReactDOMServer.renderToString(<Main dataArray={dataArray} />);
+
 const app: express.Application = express();
 
 app.get('/', (req, res) => {
-  res.send(index({name: 'snorlax'}, body));
+    res.send(index({ name: 'snorlax' }, body));
 });
 
 app.use(express.static("."));
 
 app.listen(port, () => {
-  console.log('Listening on port ', port);
+    console.log('Listening on port ', port);
 });
