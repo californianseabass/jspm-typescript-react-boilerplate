@@ -174,12 +174,16 @@ SystemJS.config({
     "child_process": "npm:jspm-nodelibs-child_process@0.2.1",
     "constants": "npm:jspm-nodelibs-constants@0.2.1",
     "crypto": "npm:jspm-nodelibs-crypto@0.2.1",
+    "csv-parse": "npm:csv-parse@2.0.0",
     "d3": "npm:d3@4.12.0",
     "domain": "npm:jspm-nodelibs-domain@0.2.1",
     "events": "npm:jspm-nodelibs-events@0.2.2",
     "fs": "npm:jspm-nodelibs-fs@0.2.1",
     "http": "npm:jspm-nodelibs-http@0.2.0",
     "https": "npm:jspm-nodelibs-https@0.2.2",
+    "lodash": "npm:lodash@4.17.4",
+    "moment": "npm:moment@2.20.1",
+    "ndjson": "npm:ndjson@1.5.0",
     "os": "npm:jspm-nodelibs-os@0.2.2",
     "path": "npm:jspm-nodelibs-path@0.2.3",
     "process": "npm:jspm-nodelibs-process@0.2.1",
@@ -699,6 +703,25 @@ SystemJS.config({
       "map": {
         "encoding": "npm:encoding@0.1.12",
         "is-stream": "npm:is-stream@1.1.0"
+      }
+    },
+    "npm:ndjson@1.5.0": {
+      "map": {
+        "json-stringify-safe": "npm:json-stringify-safe@5.0.1",
+        "split2": "npm:split2@2.2.0",
+        "minimist": "npm:minimist@1.2.0",
+        "through2": "npm:through2@2.0.3"
+      }
+    },
+    "npm:split2@2.2.0": {
+      "map": {
+        "through2": "npm:through2@2.0.3"
+      }
+    },
+    "npm:through2@2.0.3": {
+      "map": {
+        "xtend": "npm:xtend@4.0.1",
+        "readable-stream": "npm:readable-stream@2.3.3"
       }
     }
   }
