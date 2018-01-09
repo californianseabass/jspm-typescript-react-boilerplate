@@ -47,7 +47,7 @@ function index(preloadedState: any, body: String): String {
 function generateRandomBarChartData(n: number, min: number = 0, max: number = 10): number[] {
   const data = [];
   const range = max - min;
-  for (const i = 0; i < n; i++) {
+  for (let i = 0; i < n; i++) {
     data.push(Math.random(range));
   }
   return data;
@@ -81,23 +81,50 @@ function parseValidDates(data) {
   });
 }
 
-function createServer(init: any[]) {
-    const barChartProps = {
-      title: 'Some Random Data',
-      data: generateRandomBarChartData(40),
-      chart: 'loading'
-    };
+function countByDecade(counts: any) {
+  function getDecade(a: string) {
+    const len = a.length;
+    if (len > 2) {
+      return a.slice(0, len - 1);
+    } else {
+      throw new Error('the year is too early: ' + a);
+    }
+  }
 
-    const body = ReactDOMServer.renderToString(<Main barChart={barChartProps} />);
+  const countsByDecade = [];
 
-    const app: express.Application = express();
+  const decades = _.groupBy(Object.keys(counts), getDecade);
+  _.forEach(decades, (years, decade) => {
+    const total = _.sum(years.map(year => counts[year]));
+    if (decade > 175 && decade < 202) {
+      countsByDecade.push({
+        decade: decade + '0',
+        count: total
+      });
+    }
+  });
 
-    app.get('/', (req, res) => {
-      res.send(index(barChartProps, body));
-    });
+  return countsByDecade;
+}
 
-    app.use(express.static('.'));
-      return app;
+function createServer(countsByDecade: any) {
+  console.log(countsByDecade);
+  const barChartProps = {
+    title: 'Some Random Data',
+    data: countsByDecade,
+    chart: 'loading'
+  };
+
+  const body = ReactDOMServer.renderToString(<Main barChart={barChartProps} />);
+
+  const app: express.Application = express();
+
+  app.get('/', (req, res) => {
+    res.send(index(barChartProps, body));
+  });
+
+  app.use(express.static('.'));
+  return app;
 }
 
 const port = 9080;
@@ -108,6 +135,7 @@ generateData()
     const hasYear = data.filter(d => d.year);
     return _.countBy(hasYear, d => d.year);
   })
+  .then(countByDecade)
   .then(createServer)
   .then(app => {
     app.listen(port, () => {
