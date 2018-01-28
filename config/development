@@ -1,8 +1,8 @@
 DB_HOST=localhost
-DB_NAME=nac
+DB_NAME=myDb
 DB_PORT=5432
 DB_POOL_SIZE=10
-DB_USER=nac_user
+DB_USER=my_pg_user
 DB_PASS=pass325
 DB_CLIENT_TIMEOUT=30000
 

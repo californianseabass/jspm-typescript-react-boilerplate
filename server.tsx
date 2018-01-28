@@ -1,14 +1,25 @@
 'use strict';
+import dotenv from 'dotenv';
 import express from 'express';
+import passport from 'passport';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server.js';
 import { HelloWorld } from 'jspm-typescript-react-boilerplate/components/HelloWorld.tsx';
 
-import dotenv from 'dotenv';
 
-dotenv.config();
+import PostgresPool from 'jspm-typescript-react-boilerplate/lib/database/postgres.ts';
+import localLoginStrategy from 'jspm-typescript-react-boilerplate/lib/passport/local-login.ts';
+import localSignupStrategy from 'jspm-typescript-react-boilerplate/lib/passport/local-signup.ts';
+
+
+const configResult = dotenv.config();
+
+if (configResult.error) {
+    throw configResult.error;
+}
 
 function index(preloadedState: any): String {
+    // TODO sync with app in app.tsx
     const body = ReactDOMServer.renderToString(<HelloWorld compiler={preloadedState.name} />);
     return `<!doctype html>
     <meta charset="utf-8">
@@ -45,6 +56,13 @@ function index(preloadedState: any): String {
 const port = process.env.PORT || 9080;
 
 const app: express.Application = express();
+app.use(passport.initialize());
+
+const postgresPool = PostgresPool();
+
+passport.use("local-signup", localSignupStrategy(postgresPool));
+passport.use("local-login", localLoginStrategy(postgresPool));
+
 
 app.get('/', (req, res) => {
     res.send(index({ name: 'snorlax' }));
