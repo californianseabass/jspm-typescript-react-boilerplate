@@ -21,3 +21,6 @@ npm run start
 ```bash
 npm run lint
 ```
+
+## App Configuration
+Uses dotenv to handle configuration.

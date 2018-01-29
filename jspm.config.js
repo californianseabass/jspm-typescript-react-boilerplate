@@ -175,6 +175,7 @@ SystemJS.config({
     "constants": "npm:jspm-nodelibs-constants@0.2.1",
     "crypto": "npm:jspm-nodelibs-crypto@0.2.1",
     "domain": "npm:jspm-nodelibs-domain@0.2.1",
+    "dotenv": "npm:dotenv@4.0.0",
     "events": "npm:jspm-nodelibs-events@0.2.2",
     "fs": "npm:jspm-nodelibs-fs@0.2.1",
     "http": "npm:jspm-nodelibs-http@0.2.0",

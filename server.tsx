@@ -4,6 +4,10 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server.js';
 import { HelloWorld } from 'jspm-typescript-react-boilerplate/components/HelloWorld.tsx';
 
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 function index(preloadedState: any): String {
     const body = ReactDOMServer.renderToString(<HelloWorld compiler={preloadedState.name} />);
     return `<!doctype html>
@@ -38,16 +42,16 @@ function index(preloadedState: any): String {
     `;
 }
 
-const port = 9080;
+const port = process.env.PORT || 9080;
 
 const app: express.Application = express();
 
 app.get('/', (req, res) => {
-  res.send(index({name: 'snorlax'}));
+    res.send(index({ name: 'snorlax' }));
 });
 
 app.use(express.static("."));
 
 app.listen(port, () => {
-  console.log('Listening on port ', port);
+    console.log('Listening on port ', port);
 });
