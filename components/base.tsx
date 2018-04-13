@@ -1,30 +1,27 @@
 import React, { PropTypes } from "react";
 import { Link, IndexLink, browserHistory } from "react-router";
 import AppBar from "material-ui/AppBar";
-import FlatButton from "material-ui/FlatButton";
+import Button from "material-ui/Button";
 
 import userState, { logout } from "../stores/user-store";
 
 const logUserOut = () => {
-  logout().then(() => {
-    browserHistory.replace("/login");
-  });
+    logout().then(() => {
+        browserHistory.replace("/login");
+    });
 };
 
 const Base = ({ children }) => (
-  <div>
-    <AppBar
-      title="Title"
-      iconElementRight={<FlatButton label="Logout" onTouchTap={logUserOut} />}
-    />
+    <div>
+        <AppBar
+            title="Title"
+            iconElementRight={<Button variant="flat" label="Logout" onTouchTap={logUserOut} />}
+        />
 
-    {children}
+        {children}
 
-  </div>
+    </div>
 );
 
-Base.propTypes = {
-  children: PropTypes.object.isRequired
-};
 
 export default Base;

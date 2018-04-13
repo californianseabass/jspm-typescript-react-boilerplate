@@ -1,18 +1,19 @@
 import React from 'react';
+import { hydrate } from 'react-dom';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory } from "react-router";
 
-import { IntlProvider, addLocaleData } from "react-intl";
 
-import { HelloWorld } from 'jspm-typescript-react-boilerplate/components/HelloWorld.tsx';
+// TODO(sebastian) move to client.tsx and move move root to app
+import { Root } from 'jspm-typescript-react-boilerplate/components/root.tsx';
 
-import routes from 'routes/index.
 
 
 import { module } from '@hot';
 
 const preloadedState = window.__PRELOADED_STATE__;
 let container = document.getElementById('app');
-let component = ReactDOM.render(
-    <Router history={browserHistory} routes={routes} />,
-    container);
+
+let component = hydrate(
+    <Root />,
+    container
+);
