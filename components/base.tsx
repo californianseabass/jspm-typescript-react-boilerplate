@@ -1,27 +1,22 @@
-import React, { PropTypes } from "react";
-import { Link, IndexLink, browserHistory } from "react-router";
-import AppBar from "material-ui/AppBar";
-import Button from "material-ui/Button";
+import React, { PropTypes } from 'react';
+import { Link, IndexLink, browserHistory } from 'react-router';
+import AppBar from 'material-ui/AppBar';
+import Button from 'material-ui/Button';
 
-import userState, { logout } from "../stores/user-store";
+import userState, { logout } from '../stores/user-store';
 
 const logUserOut = () => {
-    logout().then(() => {
-        browserHistory.replace("/login");
-    });
+  logout().then(() => {
+    browserHistory.replace('/login');
+  });
 };
 
 const Base = ({ children }) => (
-    <div>
-        <AppBar
-            title="Title"
-            iconElementRight={<Button variant="flat" label="Logout" onTouchTap={logUserOut} />}
-        />
+  <div>
+    <AppBar title="Title" iconElementRight={<Button variant="flat" label="Logout" onTouchTap={logUserOut} />} />
 
-        {children}
-
-    </div>
+    {children}
+  </div>
 );
-
 
 export default Base;

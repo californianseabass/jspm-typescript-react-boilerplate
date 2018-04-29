@@ -96,6 +96,7 @@ export const getToken = () => {
     }
 };
 
+// TODO not necessary to make observable, nothing changes dynamically here yet
 const userState = observable({
     errors: {},
     user: {
@@ -106,5 +107,12 @@ const userState = observable({
     },
     isAuth: isAuthenticated(),
 });
+
+
+
+// must be specific about the exact field we want for autorun to work
+// autorun(() => console.log(`email: ${userState.user.email}`));
+// this doesn't work
+// autorun(() => console.log(userState.user));
 
 export default userState;
