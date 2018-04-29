@@ -10,7 +10,8 @@
     "postinstall": "jspm install",
     "start": "jspm run server.tsx",
     "shutdown": "kill -9 $(cat chokidar.pid) && rm chokidar*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "jspm bundle app.tsx build.js -w"
   },
   "keywords": [
     "jspm",
@@ -29,13 +30,17 @@
     "name": "jspm-typescript-react-boilerplate",
     "main": "jspm-typescript-react-boilerplate.js",
     "dependencies": {
+      "bcrypt": "npm:bcrypt@^2.0.1",
       "bcryptjs": "npm:bcryptjs@^2.4.3",
       "dotenv": "npm:dotenv@^4.0.0",
       "jsonwebtoken": "npm:jsonwebtoken@^8.1.1",
+      "material-ui": "npm:material-ui@next",
+      "mobx-react": "npm:mobx-react@^5.0.0",
       "passport": "npm:passport@^0.4.0",
       "passport-local": "npm:passport-local@^1.0.0",
       "pg-native": "npm:pg-native@^2.2.0",
-      "react-dom": "npm:react-dom@^15.6.1",
+      "react-jss": "npm:react-jss@^8.4.0",
+      "react-router": "npm:react-router@^4.2.0",
       "uuid": "npm:uuid@^3.2.1"
     },
     "devDependencies": {
@@ -61,13 +66,16 @@
       "http": "npm:jspm-nodelibs-http@^0.2.0",
       "https": "npm:jspm-nodelibs-https@^0.2.0",
       "jsbn": "npm:jsbn@0.1",
+      "jss": "npm:jss@^9.0.0",
+      "mobx": "npm:mobx@^4.1.1",
       "net": "npm:jspm-nodelibs-net@^0.2.0",
       "os": "npm:jspm-nodelibs-os@^0.2.0",
       "path": "npm:jspm-nodelibs-path@^0.2.0",
       "pg": "npm:pg@^7.4.1",
       "process": "npm:jspm-nodelibs-process@^0.2.0",
       "querystring": "npm:jspm-nodelibs-querystring@^0.2.0",
-      "react": "npm:react@^15.6.1",
+      "react": "npm:react",
+      "react-dom": "npm:react-dom@^16.0.0",
       "stream": "npm:jspm-nodelibs-stream@^0.2.0",
       "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
       "tls": "npm:jspm-nodelibs-tls@^0.2.0",
@@ -110,10 +118,16 @@
           "test.js"
         ]
       },
-      "npm:pbkdf2@3.0.14": {
+      "npm:lodash@4.17.5": {
+        "map": {
+          "buffer": "@empty",
+          "process": "@empty"
+        }
+      },
+      "npm:pbkdf2@3.0.16": {
         "main": "browser.js"
       },
-      "npm:safe-buffer@5.1.1": {
+      "npm:safe-buffer@5.1.2": {
         "browser": "index.js"
       },
       "npm:typescript@2.5.2": {
@@ -133,6 +147,7 @@
     }
   },
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.42",
     "express": "^4.15.4",
     "material-ui": "^1.0.0-beta.40"
   }

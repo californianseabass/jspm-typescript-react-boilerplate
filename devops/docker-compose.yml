@@ -1,7 +1,19 @@
-version: '3'
+version: '3.3'
 services:
   postgres:
     image: 'boilerplate/postgres:v0.0.1'
     ports:
       - "5432:5432"
     command: postgres
+  server:
+    image: 'boilerplate/server:v0.0.1'
+    depends_on:
+      - postgres
+    ports:
+      - "9080:9080"
+    command: npm run start
+    working_dir: /repo/
+    volumes:
+      - type: bind
+        source: /home/sebastian/developer/jspm-typescript-react-boilerplate/
+        target: /repo/

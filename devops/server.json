@@ -1,0 +1,41 @@
+{
+    "builders": [
+    {
+      "type": "docker",
+      "image": "node:alpine",
+      "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"],
+      "commit": true,
+      "changes": [
+        "EXPOSE 9080 9080"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "alpine-linux-install.sh",
+      "destination": "/tmp/alpine-linux-install.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "/bin/sh /tmp/alpine-linux-install.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "mkdir -p /repo && cd /repo"
+      ]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "boilerplate/server",
+        "tag": "v0.0.1"
+      }
+    ]
+  ]
+}
