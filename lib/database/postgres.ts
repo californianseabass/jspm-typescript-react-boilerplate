@@ -1,25 +1,23 @@
 'use strict';
-import bcrypt from 'bcryptjs';
 import pg from 'pg';
 
 let pool = null;
+
 
 export default () => {
     if (pool) {
         return pool;
     }
 
-    bcrypt.hash(process.env.DB_PASS, 10, function(err, password_hash) {
-        const config = {
-            user: process.env.DB_USER,
-            database: process.env.DB_NAME,
-            password: password_hash,
-            host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
-            max: process.env.DB_POOL_SIZE,
-            idleTimeoutMillis: process.env.DB_CLIENT_TIMEOUT,
-        };
-    });
+    const config = {
+        user: process.env.DB_USER,
+        database: process.env.DB_NAME,
+        password: process.env.DB_PASS,
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        max: process.env.DB_POOL_SIZE,
+        idleTimeoutMillis: process.env.DB_CLIENT_TIMEOUT,
+    };
 
     pool = new pg.Pool(config);
 

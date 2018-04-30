@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { observer } from 'mobx-react';
 import { observable, autorun, action } from 'mobx';
-import { Link, browserHistory } from 'react-router';
+// import { Link, browserHistory } from 'react-router';
 import Card, { CardHeader } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
@@ -13,7 +13,7 @@ import userState, { login } from '../stores/user-store';
 function onSubmit(event) {
     event.preventDefault();
     login().then(res => {
-        browserHistory.push('/');
+        // browserHistory.push('/');
     });
 }
 
