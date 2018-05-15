@@ -29,12 +29,12 @@
     "name": "jspm-typescript-react-boilerplate",
     "main": "jspm-typescript-react-boilerplate.js",
     "dependencies": {
+      "babel-jest": "npm:babel-jest@^22.4.3",
       "dotenv": "npm:dotenv@^4.0.0",
       "react-dom": "npm:react-dom@^15.6.1"
     },
     "devDependencies": {
       "express": "npm:express@^4.15.4",
-      "module": "npm:jspm-nodelibs-module@^0.2.0",
       "net": "npm:jspm-nodelibs-net@^0.2.0",
       "plugin-typescript": "github:frankwallis/plugin-typescript@^7.1.0",
       "querystring": "npm:jspm-nodelibs-querystring@^0.2.0",
@@ -42,7 +42,9 @@
       "typescript": "npm:typescript@^2.4.0"
     },
     "peerDependencies": {
+      "@babel/core": "npm:@babel/core@^7.0.0-0",
       "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "babel-core": "npm:babel-core@^7.0.0-07.0.0-bridge.0",
       "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
       "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
       "constants": "npm:jspm-nodelibs-constants@^0.2.0",
@@ -52,12 +54,15 @@
       "fs": "npm:jspm-nodelibs-fs@^0.2.0",
       "http": "npm:jspm-nodelibs-http@^0.2.0",
       "https": "npm:jspm-nodelibs-https@^0.2.0",
+      "module": "npm:jspm-nodelibs-module@^0.2.0",
       "os": "npm:jspm-nodelibs-os@^0.2.0",
       "path": "npm:jspm-nodelibs-path@^0.2.0",
       "process": "npm:jspm-nodelibs-process@^0.2.0",
       "react": "npm:react@^15.6.1",
+      "repl": "npm:jspm-nodelibs-repl@^0.2.0",
       "stream": "npm:jspm-nodelibs-stream@^0.2.0",
       "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "tty": "npm:jspm-nodelibs-tty@^0.2.0",
       "url": "npm:jspm-nodelibs-url@^0.2.0",
       "util": "npm:jspm-nodelibs-util@^0.2.0",
       "vm": "npm:jspm-nodelibs-vm@^0.2.0",
@@ -95,10 +100,16 @@
           "test.js"
         ]
       },
-      "npm:pbkdf2@3.0.13": {
+      "npm:lodash@4.17.10": {
+        "map": {
+          "buffer": "@empty",
+          "process": "@empty"
+        }
+      },
+      "npm:pbkdf2@3.0.16": {
         "main": "browser.js"
       },
-      "npm:safe-buffer@5.1.1": {
+      "npm:safe-buffer@5.1.2": {
         "browser": "index.js"
       },
       "npm:typescript@2.5.2": {

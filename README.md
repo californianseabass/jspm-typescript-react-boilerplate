@@ -12,6 +12,15 @@ npm i
 npm i
 ```
 
+Installing babel-jest required
+
+``` bash
+jspm install --dev npm:babel-core@^7.0.0-0 npm:@babel/core
+jspm install --dev npm:babel-jest
+then saying no to install range
+Enter any custom package resolution range: npm:babel-core@^7.0.0-0 7.0.0-bridge.0
+```
+
 ### Running
 ```bash
 npm run start
