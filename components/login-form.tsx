@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 import { observable, autorun, action } from 'mobx';
 // import { Link, browserHistory } from 'react-router';
@@ -46,7 +46,7 @@ const LoginForm = () => {
             <Button variant="raised" color="primary">
                 Login
             </Button>
-            <Button variant="raised">
+            <Button variant="raised" href="/signup">
                 Need an Account? Sign Up
             </Button>
 

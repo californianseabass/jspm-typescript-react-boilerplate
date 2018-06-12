@@ -1,6 +1,24 @@
 import { observable, autorun, toJS } from "mobx";
 
 
+interface Error {
+    summary?: string;
+}
+
+interface User {
+    email: string;
+    password: string;
+    name: string;
+    id: string;
+}
+
+interface UserState {
+    errors: Error;
+    user: User;
+    isAuth: boolean
+}
+
+
 let localStorage = null;
 
 export const signup = () => {
@@ -10,24 +28,22 @@ export const signup = () => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(toJS(userState.user)),
-    })
-        .then(resp => {
-            if (resp.status === 200) {
-                return {
-                    status: "success",
-                    message: "user successfully signed up",
-                };
-            } else {
-                return {
-                    status: "error",
-                    message: "could not sign up user",
-                };
-            }
-        })
-        .catch(error => {
-            debugger;
-            console.log("really unable to authenticate");
-        });
+    }).then(resp => {
+        if (resp.status === 200) {
+            return {
+                status: "success",
+                message: "user successfully signed up",
+            };
+        } else {
+            return {
+                status: "error",
+                message: "could not sign up user",
+            };
+        }
+    }).catch(error => {
+        debugger;
+        console.log("really unable to authenticate");
+    });
 };
 
 export const login = () => {
@@ -42,22 +58,19 @@ export const login = () => {
             password: userAsJson.password,
             email: userAsJson.email,
         }),
-    })
-        .then(resp => {
-            if (resp.status === 200) {
-                return resp.json();
-            } else {
-                throw new Error("Error in response from /auth/login: ", resp.status);
-            }
-        })
-        .then(json => {
-            userState.user.id = json.user.id;
-            authenticate(json.token);
-        })
-        .catch(error => {
-            debugger;
-            console.log("cannot login");
-        });
+    }).then(resp => {
+        if (resp.status === 200) {
+            return resp.json();
+        } else {
+            throw new Error("Error in response from /auth/login: ", resp.status);
+        }
+    }).then(json => {
+        userState.user.id = json.user.id;
+        authenticate(json.token);
+    }).catch(error => {
+        debugger;
+        console.log("cannot login");
+    });
 };
 
 export const logout = () => {
@@ -67,7 +80,7 @@ export const logout = () => {
     });
 };
 
-function isAuthenticated() {
+function isAuthenticated(): boolean {
     if (localStorage !== null) {
         return localStorage.getItem("authToken") !== null;
     } else {
@@ -97,7 +110,7 @@ export const getToken = () => {
 };
 
 // TODO not necessary to make observable, nothing changes dynamically here yet
-const userState = observable({
+const userState: UserState = {
     errors: {},
     user: {
         email: "",
@@ -106,7 +119,7 @@ const userState = observable({
         id: null,
     },
     isAuth: isAuthenticated(),
-});
+};
 
 
 
@@ -115,4 +128,4 @@ const userState = observable({
 // this doesn't work
 // autorun(() => console.log(userState.user));
 
-export default userState;
+export default observable(userState);

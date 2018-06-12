@@ -6,17 +6,14 @@ import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from 'mater
 import { IntlProvider, addLocaleData } from 'react-intl';
 import { Router, browserHistory } from 'react-router';
 
-import userState from '../stores/user-store.ts';
+import LoginForm from '../components/login-form.tsx';
+import SignupForm from '../components/signup-form.tsx';
+import userState from '../stores/user-store';
 
-import LoginForm from 'components/login-form.tsx';
 
-const authCheck = (nextState, replace) => {
-    if (!userState.isAuth) {
-        replace({
-            pathname: '/login'
-        });
-    }
-};
+interface RootProps {
+    path: string;
+}
 
 export const theme = createMuiTheme({
     palette: {
@@ -25,12 +22,15 @@ export const theme = createMuiTheme({
     }
 });
 
-export default () => {
-    if (!userState.isAuth) {
-        return <LoginForm />;
-    } else {
-        return (
-            <div>user is logged in</div>
-        );
+const Root = (props: RootProps) => {
+    switch (props.path) {
+        case '/login':
+            return <LoginForm />;
+        case '/signup':
+            return <SignupForm />;
+        default:
+            return <h1>404</h1>;
     }
 };
+
+export default Root;

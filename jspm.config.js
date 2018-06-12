@@ -673,7 +673,8 @@ SystemJS.config({
         "@types/react-transition-group": "npm:@types/react-transition-group@2.0.9",
         "@types/jss": "npm:@types/jss@9.5.2",
         "keycode": "npm:keycode@2.2.0",
-        "prop-types": "npm:prop-types@15.6.1"
+        "prop-types": "npm:prop-types@15.6.1",
+        "@babel/runtime": "npm:@babel/runtime@7.0.0-beta.49"
       }
     },
     "npm:react-transition-group@2.3.1": {
@@ -717,7 +718,7 @@ SystemJS.config({
     },
     "npm:babel-runtime@6.26.0": {
       "map": {
-        "core-js": "npm:core-js@2.5.5",
+        "core-js": "npm:core-js@2.5.7",
         "regenerator-runtime": "npm:regenerator-runtime@0.11.1"
       }
     },
@@ -844,6 +845,12 @@ SystemJS.config({
         "string_decoder": "npm:string_decoder@0.10.31",
         "inherits": "npm:inherits@2.0.3",
         "core-util-is": "npm:core-util-is@1.0.2"
+      }
+    },
+    "npm:@babel/runtime@7.0.0-beta.49": {
+      "map": {
+        "regenerator-runtime": "npm:regenerator-runtime@0.11.1",
+        "core-js": "npm:core-js@2.5.7"
       }
     }
   }

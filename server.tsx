@@ -5,14 +5,18 @@ import passport from 'passport';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
+import App from 'jspm-typescript-react-boilerplate/app.tsx';
 import PostgresPool from 'jspm-typescript-react-boilerplate/lib/database/postgres.ts';
 import localLoginStrategy from 'jspm-typescript-react-boilerplate/lib/passport/local-login.ts';
 import localSignupStrategy from 'jspm-typescript-react-boilerplate/lib/passport/local-signup.ts';
 import Root, { theme } from 'jspm-typescript-react-boilerplate/components/root.tsx';
+import UserState from 'jspm-typescript-react-boilerplate/stores/user-store';
 
 import { SheetsRegistry } from 'react-jss/lib/jss';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from 'material-ui/styles';
+
+import userState from './stores/user-store';
 
 const configResult = dotenv.config();
 
@@ -21,7 +25,6 @@ if (configResult.error) {
 }
 
 function render(preloadedState: any, body: any, css: any): String {
-    // TODO sync with app in app.tsx
     return `<!doctype html>
     <meta charset="utf-8">
     <html lang="en">
@@ -51,7 +54,7 @@ function render(preloadedState: any, body: any, css: any): String {
     <script>
         System.import('systemjs-hot-reloader').then(function(connect) {
           connect();
-          System.import('app.tsx');
+          System.import('client.tsx');
         });
     </script>
     </html>
@@ -65,28 +68,16 @@ app.use(passport.initialize());
 
 const postgresPool = PostgresPool();
 
-// TODO breaking here I think
+const sheetsRegistry = new SheetsRegistry();
+
 passport.use('local-signup', localSignupStrategy(postgresPool));
 passport.use('local-login', localLoginStrategy(postgresPool));
 
-// send all requests to index.html so browserHistory works
 
-app.get('/', (req, res) => {
-    const context = {};
+app.get('/((signup)?|(login)?)', (req, res) => {
 
-    // Create a sheetsRegistry instance.
-    const sheetsRegistry = new SheetsRegistry();
-
-    const generateClassName = createGenerateClassName();
-
-    const body = ReactDOMServer.renderToString(
-        <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
-            <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
-                <Root />
-            </MuiThemeProvider>
-        </JssProvider>
-    );
-
+    const path = userState.isAuth ? req.path : '/login';
+    const body = ReactDOMServer.renderToString(<App path={path} sheetsRegistry={sheetsRegistry} />);
     const css = sheetsRegistry.toString();
 
     res.send(render({ name: 'snorlax' }, body, css));

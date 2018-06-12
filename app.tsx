@@ -13,33 +13,23 @@
  * let container = document.getElementById('app');
  * */
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from 'material-ui/Button';
 
-import { SheetsRegistry } from 'react-jss/lib/jss';
 import JssProvider from 'react-jss/lib/JssProvider';
-import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from 'material-ui/styles';
+import { MuiThemeProvider, createGenerateClassName } from 'material-ui/styles';
 
 import Root, { theme } from 'jspm-typescript-react-boilerplate/components/root.tsx';
 
-export function App(props) {
-  const context = {};
+function App(props) {
+    // Create a sheetsRegistry instance.
+    const generateClassName = createGenerateClassName();
 
-  // Create a sheetsRegistry instance.
-
-  const generateClassName = createGenerateClassName();
-
-  return (
-    <JssProvider registry={props.sheetsRegistry} generateClassName={generateClassName}>
-      <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
-        <Root />
-      </MuiThemeProvider>
-    </JssProvider>
-  );
+    return (
+        <JssProvider registry={props.sheetsRegistry} generateClassName={generateClassName}>
+            <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
+                <Root path={props.path} />
+            </MuiThemeProvider>
+        </JssProvider>
+    );
 }
 
-let container = document.getElementById('app');
-
-const sheetsRegistry = new SheetsRegistry();
-
-let component = ReactDOM.hydrate(<App sheetRegistry={sheetsRegistry} />, container);
+export default App;
